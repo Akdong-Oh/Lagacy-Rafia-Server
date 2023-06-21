@@ -13,7 +13,7 @@ class UserService(private val userRepository: UserRepository) {
         return userRepository.existsByName(userDto.name)
             .flatMap { exists ->
                 if (exists) {
-                    Mono.error(RuntimeException("Existed User, name: ${userDto.name}"))
+                    Mono.error(IllegalArgumentException("Existed User, name: ${userDto.name}"))
                 } else {
                     val user = User(UUID.randomUUID(), userDto.name)
                     userRepository.save(user)
@@ -23,12 +23,12 @@ class UserService(private val userRepository: UserRepository) {
 
     suspend fun findById(id: UUID): Mono<User> {
         return userRepository.findById(id)
-            .switchIfEmpty(Mono.error(RuntimeException("Not Found User, id: $id")))
+            .switchIfEmpty(Mono.error(IllegalArgumentException("Not Found User, id: $id")))
     }
 
     suspend fun update(user: User): Mono<User> {
         return userRepository.findById(user.id)
-            .switchIfEmpty(Mono.error(RuntimeException("Not Found User, id: $user.id")))
+            .switchIfEmpty(Mono.error(IllegalArgumentException("Not Found User, id: $user.id")))
             .flatMap { existingUser ->
                 val updatedUserWithId = User(existingUser.id, user.name)
                 userRepository.save(updatedUserWithId)
