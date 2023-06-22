@@ -1,4 +1,4 @@
-package dev.yangsijun.rafia.domain.user.api
+package dev.yangsijun.rafia.domain.user.service
 
 import dev.yangsijun.rafia.domain.user.domain.User
 import dev.yangsijun.rafia.domain.user.dto.CreateUser
