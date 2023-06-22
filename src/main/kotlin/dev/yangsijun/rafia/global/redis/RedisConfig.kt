@@ -1,6 +1,5 @@
 package dev.yangsijun.rafia.global.redis
 
-import dev.yangsijun.rafia.domain.history.domain.Player
 import dev.yangsijun.rafia.domain.room.domain.Room
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -30,17 +29,4 @@ class RedisConfig {
             .build()
         return ReactiveRedisTemplate(connectionFactory, serializationContext)
     }
-
-    @Bean
-    fun playerRedisTemplate(
-        connectionFactory: ReactiveRedisConnectionFactory
-    ): ReactiveRedisOperations<String, Player> {
-        val serializationContext: RedisSerializationContext<String, Player> = RedisSerializationContext
-            .newSerializationContext<String, Player>(StringRedisSerializer())
-            .hashKey(StringRedisSerializer())
-            .hashValue(Jackson2JsonRedisSerializer(Player::class.java))
-            .build()
-        return ReactiveRedisTemplate(connectionFactory, serializationContext)
-    }
-
 }
