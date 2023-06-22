@@ -3,7 +3,7 @@ package dev.yangsijun.rafia.domain.user.api
 import dev.yangsijun.rafia.domain.user.domain.User
 import dev.yangsijun.rafia.domain.user.dto.CreateUser
 import dev.yangsijun.rafia.domain.user.service.UserService
-import dev.yangsijun.rafia.global.security.JwtManager
+import dev.yangsijun.rafia.global.jwt.JwtManager
 import kotlinx.coroutines.reactor.awaitSingle
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

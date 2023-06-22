@@ -1,4 +1,4 @@
-package dev.yangsijun.rafia.global.security
+package dev.yangsijun.rafia.global.jwt
 
 import dev.yangsijun.rafia.domain.user.domain.User
 import io.jsonwebtoken.Jwts
