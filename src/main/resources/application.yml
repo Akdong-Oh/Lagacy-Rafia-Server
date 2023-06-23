@@ -28,3 +28,4 @@ logging:
           mongodb:
             core:
               MongoTemplate: DEBUG
+    dev.yangsijun.rafia.*: TRACE
